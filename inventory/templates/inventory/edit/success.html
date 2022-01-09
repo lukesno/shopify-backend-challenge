@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Inventories</title>
+    {# Load the tag library #}
+    {% load bootstrap5 %}
+
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+    {# Display django.contrib.messages as Bootstrap alerts #}
+    {% bootstrap_messages %}
+
+  </head>
+  <body>
+    <p>Successfully updated item: {{curr_item.name}}!</p>
+    
+    <label for="name" class="form-label">Name</label>
+    <input readonly  id="name" name="name" class="form-control" value="{{curr_item.name}}" required>
+
+    <label for="price" class="form-label">Price</label>
+    <input readonly  id="price" name="price" class="form-control" value="{{curr_item.price}}" required>
+
+    <label for="cogs" class="form-label">COGS</label>
+    <input readonly  id="cogs" name="cogs" class="form-control" value="{{curr_item.cogs}}" required>
+
+    <label for="quantity" class="form-label">Quantity</label>
+    <input readonly  id="quantity" name="quantity" class="form-control" value="{{curr_item.quantity}}" required>
+
+    <label for="origin_country" class="form-label">Country of Origin</label>
+    <input readonly  id="origin_country" name="origin_country" class="form-control" value="{{curr_item.origin_country}}" required>
+
+    <label for="weight" class="form-label">Weight</label>
+    <input readonly  id="weight" name="weight" class="form-control" value="{{curr_item.weight}}" required>
+
+    <button type="button" class="btn btn-secondary"><a style="color: white; text-decoration: none;" href="/">Go back to main</a></button>
+    <button type="button" class="btn btn-secondary"><a style="color: white; text-decoration: none;" href="/edit/{{ curr_item.id }}/">Edit Again</a></button>
+  </body>
+</html>

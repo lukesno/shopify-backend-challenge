@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Inventories</title>
+    <title>Create Item</title>
     {# Load the tag library #}
     {% load bootstrap5 %}
 
@@ -14,8 +14,8 @@
 
   </head>
   <body>
-    <h1 style="margin-left: 1%; margin-top: 1%;">Update Item</h1>
-    <form action="/edit/{{curr_item.id}}/submit/" method="post">
+    <h1 style="margin-left: 1%; margin-top: 1%;">Create Item</h1>
+    <form action="/create/submit/" method="post">
         <!-- <div class="mb-3"> -->
             <label for="name" class="form-label">Name</label>
             <input id="name" name="name" class="form-control" value="{{curr_item.name}}" required>

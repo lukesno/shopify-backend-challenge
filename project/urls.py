@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # Make inventory the default URL
     path('', include('inventory.urls')),
+    path('api/item/', include('api.urls'))
 ]

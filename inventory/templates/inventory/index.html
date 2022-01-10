@@ -15,30 +15,7 @@
   </head>
   <body>
     <h1 style="margin-left: 1%; margin-top: 1%;">Current Inventory</h1>
-    <!-- <div class="container">
-        <div class="row">
-            <div class="col">Item Name</div>
-            <div class="col">Quantity</div>
-            <div class="col">Price</div>
-            <div class="col">COGS</div>
-            <div class="col">Country of Origin</div>
-            <div class="col">Weight</div>
-        </div>
-        {% if item_list %}
-            <div class="row">
-            {% for item in item_list %}
-                <div class="col">{{item.name}}</div>
-                <div class="col">{{item.quantity}}</div>
-                <div class="col">{{item.price}}</div>
-                <div class="col">{{item.cogs}}</div>
-                <div class="col">{{item.origin_country}}</div>
-                <div class="col">{{item.weight}}</div>
-            {% endfor %}
-            </div>
-        {% else %}
-            <p>No items are available.</p>
-        {% endif %}
-    </div> -->
+    <button type="button" class="btn btn-primary btn-lg"><a style="color: white; text-decoration: none;" href="/create/">Create Item</a></button>
     <table class="table">
         <thead>
             <tr>
@@ -62,7 +39,7 @@
                 <td>{{item.cogs}}</td>
                 <td>{{item.origin_country}}</td>
                 <td>{{item.weight}}</td>
-                <td><a href="/edit/{{ item.id }}/" style="color: #0d6efd; cursor: pointer;">Update</a></td>
+                <td><a href="/edit/{{item.id}}/" style="color: #0d6efd; cursor: pointer;">Update</a></td>
                 <td><a style="color: #dc3545; cursor: pointer;">Delete</a></td>
             </tr>
             {% endfor %}

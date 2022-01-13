@@ -1,9 +1,8 @@
 from django.db import models
 from datetime import datetime
 
-# Create your models here.
-
 # Abstract model that handles deletion
+# Extracted out the deletion logic for modularity
 class Deletion(models.Model):
     
     # Making Deletion an abstract model; meaning Deletion can't be initialized on its own
@@ -12,16 +11,14 @@ class Deletion(models.Model):
     
     def delete(self, comment):
         ## use .strftime("%Y/%m/%d %H:%M:%S") on deletion_time when portraying to users
-        self.deletion_time = datetime.now()
+        # Standardized to GMT time
+        self.deletion_time = datetime.utcnow()
         self.deletion_comment = comment
+        print("hi")
         # saving changes back into database
         self.save()
-    
-    def hard_delete(self):
-        ## Need to test if this works
-        self.delete()
 
-class Item(models.Model):
+class Item(Deletion):
     uuid = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
     price = models.DecimalField(default=0, decimal_places=2, max_digits=30)

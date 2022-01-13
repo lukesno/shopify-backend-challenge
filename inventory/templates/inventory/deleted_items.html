@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Deleted Items</title>
+    {# Load the tag library #}
+    {% load bootstrap5 %}
+
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+    {# Display django.contrib.messages as Bootstrap alerts #}
+    {% bootstrap_messages %}
+
+  </head>
+  <body>
+    <h1 style="margin-left: 1%; margin-top: 1%;">Deleted Items</h1>
+    <h4 style="margin-left: 1%; margin-top: 1%;">Note: All deletion times are in GMT!</h1>
+    <button type="button" class="btn btn-primary btn-lg"><a style="color: white; text-decoration: none;" href="/">Go back to main page</a></button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Item Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">COGS</th>
+                <th scope="col">Country of Origin</th>
+                <th scope="col">Weight</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if item_list %}
+            {% for item in item_list %}
+            <tr>
+                <td>{{item.name}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.cogs}}</td>
+                <td>{{item.origin_country}}</td>
+                <td>{{item.weight}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="table .table-borderless">
+                        <tbody>
+                            <tr><td>Deleted at: {{item.deletion_time}}</td></tr>
+                            <tr><td>Deletion reason: {{item.deletion_comment}}</td></tr>
+                            <tr><td>Delete Permenently  Restore Item</td></tr>
+                        </tbody>
+
+                    </table>
+                </td>
+            </tr>
+            <!-- <tr>
+                <td>Deletion reason: {{item.deletion_comment}}</td>
+            </tr>
+            <tr>
+                <td>Delete Permenently  Restore Item</td>
+            </tr> -->
+
+            {% endfor %}
+            {% else %}
+                <tr>
+                    <th>No items are available.</th>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+  </body>
+</html>

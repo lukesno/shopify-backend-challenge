@@ -10,5 +10,5 @@ class ItemSerializer(serializers.Serializer):
     quantity = serializers.IntegerField()
     origin_country = serializers.CharField(max_length=50)
     weight = serializers.DecimalField(decimal_places=2, max_digits=30) # kg by default
-    deletion_comment = serializers.CharField(max_length=50)
-    deletion_time = serializers.DateTimeField()
+    deletion_comment = serializers.CharField(allow_null=True, max_length=50)
+    deletion_time = serializers.DateTimeField(allow_null=True, format="%Y/%m/%d %H:%M:%S")

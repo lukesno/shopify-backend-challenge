@@ -16,6 +16,7 @@
   <body>
     <h1 style="margin-left: 1%; margin-top: 1%;">Current Inventory</h1>
     <button type="button" class="btn btn-primary btn-lg"><a style="color: white; text-decoration: none;" href="/create/">Create Item</a></button>
+    <button type="button" class="btn btn-primary btn-lg"><a style="color: white; text-decoration: none;" href="/deleted/">View Deleted Items</a></button>
     <table class="table">
         <thead>
             <tr>
@@ -30,8 +31,8 @@
             </tr>
         </thead>
         <tbody>
-            {% if item_list %}
-            {% for item in item_list %}
+            {% if data %}
+            {% for item in data %}
             <tr>
                 <td>{{item.name}}</td>
                 <td>{{item.quantity}}</td>
@@ -40,12 +41,12 @@
                 <td>{{item.origin_country}}</td>
                 <td>{{item.weight}}</td>
                 <td><a href="/edit/{{item.id}}/" style="color: #0d6efd; cursor: pointer;">Update</a></td>
-                <td><a style="color: #dc3545; cursor: pointer;">Delete</a></td>
+                <td><a href="/remove/{{item.id}}/" style="color: #dc3545; cursor: pointer;">Delete</a></td>
             </tr>
             {% endfor %}
             {% else %}
                 <tr>
-                    <th>No items are available.</th>
+                    <th>{{message}}</th>
                 </tr>
             {% endif %}
         </tbody>

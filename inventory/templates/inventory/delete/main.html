@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Delete Item</title>
+    {# Load the tag library #}
+    {% load bootstrap5 %}
+
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+    {# Display django.contrib.messages as Bootstrap alerts #}
+    {% bootstrap_messages %}
+
+  </head>
+  <body>
+    <h1 style="margin-left: 1%; margin-top: 1%;">Delete Item</h1>
+    <h4>Why are you deleting this item?</h4>
+    <form action="/remove/{{curr_item.id}}/submit/" method="post">
+        <div>
+            <input type="radio" id="option1" name="reason" value="Discontinued Item">
+            <label for="option1" class="form-label">Discontinued Item</label>
+        </div>
+
+        <div>
+            <input type="radio" id="option2" name="reason" value="Factory Defect Found">
+            <label for="option2" class="form-label">Factory Defect Found</label>
+        </div>
+
+        <div>
+            <input type="radio" id="option3" name="reason" value="Out of Stock">
+            <label for="option3" class="form-label">Out of Stock</label>
+        </div>
+
+        <div>
+            <input type="radio" id="option4" name="reason" value="">
+            <label for="option4" class="form-label">Other: </label>
+            <input id="option4input" value="" oninput="updateValue()">
+        </div>
+
+        <input type="submit" value="OK">
+    </form>
+
+    <script>
+        function updateValue() {
+            var toUpdate = document.getElementById("option4")
+            toUpdate.value = document.getElementById("option4input").value;
+        }
+    </script>
+
+  </body>
+</html>

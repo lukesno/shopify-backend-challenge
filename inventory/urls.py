@@ -11,4 +11,8 @@ urlpatterns = [
     path('create/submit/', views.submit_item, name="submit_item"),
     path('remove/<int:item_id>/', views.render_deletion_page, name="render_deletion_page"),
     path('remove/<int:item_id>/submit/', views.submit_deletion, name="submit_deletion"),
+
+    ## change these later
+    path('remove/hard/<int:item_id>/submit/', views.submit_hard_deletion, name="submit_hard_deletion"),
+    path('restore/<int:item_id>/submit/', views.submit_restoration, name="submit_restoration"),
 ]

@@ -17,6 +17,10 @@ class Deletion(models.Model):
         print("hi")
         # saving changes back into database
         self.save()
+    
+    # Calling original delete() from models.Model
+    def hard_delete(self):
+        super(Deletion, self).delete()
 
 class Item(Deletion):
     uuid = models.CharField(max_length=50)

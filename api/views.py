@@ -182,7 +182,15 @@ def soft_delete_item(request, item_id):
 @api_view(['DELETE'])
 def hard_delete_item(request, item_id):
     try:
-        Item.objects.delete(id=item_id)
+        curr_item = Item.objects.get(id=item_id)
+
+        if not curr_item:
+            return EmptyResultSet()
+            
+        curr_item.hard_delete()
+
         return JsonResponse({"success": True, "message": "Successfully deleted item completely."})
+    except EmptyResultSet as empty_res_err:
+        return JsonResponse({"success": False, "message": str(empty_res_err)})
     except:
          return JsonResponse({"success": False, "message": "Failed to delete item due to unknown reasons. Please contact an administrator or try again later"})

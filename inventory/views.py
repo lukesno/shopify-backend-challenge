@@ -39,7 +39,7 @@ def render_deletion_page(request, item_id):
     curr_item = requests.get(f"http://127.0.0.1:8000/api/item/get/{item_id}")
     context = json.loads(curr_item.text)
 
-    return render(request, 'inventory/delete/main.html', context)
+    return render(request, 'inventory/delete/soft/main.html', context)
 
 @csrf_exempt
 def submit_item(request):
@@ -70,8 +70,23 @@ def submit_deletion(request, item_id):
         res = requests.put(f"http://127.0.0.1:8000/api/item/delete/soft/{item_id}", data=json.dumps(request.POST))
         context = json.loads(res.text)
 
-        return render(request, 'inventory/delete/success.html', context)
+        return render(request, 'inventory/delete/soft/success.html', context)
 
+##### TEMP #######
+# Replace when we get a general fallback
+
+def submit_hard_deletion(request, item_id):
+    res = requests.delete(f"http://127.0.0.1:8000/api/item/delete/hard/{item_id}")
+    context = json.loads(res.text)
+
+    return render(request, 'inventory/delete/hard/success.html', context)
+
+def submit_restoration(request, item_id):
+    res = requests.put(f"http://127.0.0.1:8000/api/item/restore/{item_id}")
+    context = json.loads(res.text)
+
+    # replace the template with the general one
+    return render(request, 'inventory/delete/hard/success.html', context)
 
 # @csrf_exempt
 # def submit_hard_deletion(request, item_id):

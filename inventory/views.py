@@ -14,35 +14,31 @@ import uuid
 
 def render_main_page(request):
     item_list = requests.get(f"http://127.0.0.1:8000/api/item/get/all")
-    # Passing on item_list as a parameter to the html template
+    # Passing on response of item_list as a parameter to the html template
     context = json.loads(item_list.text)
-    print(context)
+
     return render(request, 'inventory/index.html', context)
 
 def render_deleted_page(request):
     deleted_items_list = requests.get(f"http://127.0.0.1:8000/api/item/get/deleted")
-    # Passing on item_list as a parameter to the html template
-    json_data = json.loads(deleted_items_list.text)
+    context = json.loads(deleted_items_list.text)
 
-    context = { 'item_list': json_data }
     return render(request, 'inventory/deleted_items.html', context)
+
+def render_create_page(request):
+    return render(request, 'inventory/create/main.html')   
 
 def render_edit_page(request, item_id):
     ## implement error checking?
     curr_item = requests.get(f"http://127.0.0.1:8000/api/item/get/{item_id}")
-    json_data = json.loads(curr_item.text)
+    context = json.loads(curr_item.text)
 
-    context = { 'curr_item': json_data }
     return render(request, 'inventory/edit/main.html', context)
-
-def render_create_page(request):
-    return render(request, 'inventory/create/main.html')    
 
 def render_deletion_page(request, item_id):
     curr_item = requests.get(f"http://127.0.0.1:8000/api/item/get/{item_id}")
-    json_data = json.loads(curr_item.text)
+    context = json.loads(curr_item.text)
 
-    context = { 'curr_item': json_data }
     return render(request, 'inventory/delete/main.html', context)
 
 @csrf_exempt
@@ -64,14 +60,14 @@ def submit_edit(request, item_id):
         curr_item = requests.get(f"http://127.0.0.1:8000/api/item/get/{item_id}")
         curr_item_json = json.loads(curr_item.text)
 
-        context['curr_item'] =  curr_item_json
+        context['data'] =  curr_item_json['data']
 
         return render(request, 'inventory/edit/success.html', context)
 
 @csrf_exempt
 def submit_deletion(request, item_id):
     if request.method == 'POST':
-        res = requests.put(f"http://127.0.0.1:8000/api/item/delete/{item_id}", data=json.dumps(request.POST))
+        res = requests.put(f"http://127.0.0.1:8000/api/item/delete/soft/{item_id}", data=json.dumps(request.POST))
         context = json.loads(res.text)
 
         return render(request, 'inventory/delete/success.html', context)

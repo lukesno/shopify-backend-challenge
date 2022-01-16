@@ -16,7 +16,7 @@
   <body>
     <h1 style="margin-left: 1%; margin-top: 1%;">Deleted Items</h1>
     <h4 style="margin-left: 1%; margin-top: 1%;">Note: All deletion times are in GMT!</h1>
-    <button type="button" class="btn btn-primary btn-lg"><a style="color: white; text-decoration: none;" href="/">Go back to main page</a></button>
+    <a style="color: white; text-decoration: none;" href="/"><button type="button" class="btn btn-primary btn-lg">Go back to main page</button></a>
     <table class="table">
         <thead>
             <tr>
@@ -29,8 +29,8 @@
             </tr>
         </thead>
         <tbody>
-            {% if item_list %}
-            {% for item in item_list %}
+            {% if data %}
+            {% for item in data %}
             <tr>
                 <td>{{item.name}}</td>
                 <td>{{item.quantity}}</td>

@@ -53,21 +53,29 @@ import uuid
 def get_item(request, type):
     try:
         queryset = {}
-        # serializer = {}
+        serializer = {}
         # check = {}
-        # if type == "all":
-        #     print("You made it")
-        #     queryset = Item.objects.filter(deletion_comment__isnull=True)
-        #     # Items are guaranteed to be serialized correctly. (error handling in creation/update workflows)
-        #     serializer = ItemSerializer(queryset, many=True)
+        if type == "all":
+            print("You made it")
+            queryset = Item.objects.filter(deletion_comment__isnull=True)
+            # Items are guaranteed to be serialized correctly. (error handling in creation/update workflows)
+            serializer = ItemSerializer(queryset, many=True)
 
-        # elif type == "deleted":
-        #     queryset = Item.objects.filter(deletion_comment__isnull=False)
-        #     # Items are guaranteed to be serialized correctly. (error handling in creation/update workflows)
-        #     serializer = ItemSerializer(queryset, many=True)
-        # # Deserializing data in order to validate it
-        # check = ItemSerializer(data=serializer.data, many=True)
+        elif type == "deleted":
+            queryset = Item.objects.filter(deletion_comment__isnull=False)
+            # Items are guaranteed to be serialized correctly. (error handling in creation/update workflows)
+            serializer = ItemSerializer(queryset, many=True)
+        elif type.isnumeric():
+            queryset = Item.objects.get(id=int(type))
+            # Items are guaranteed to be serialized correctly. (error handling in creation/update workflows)
+            serializer = ItemSerializer(queryset)
+        else:
+            raise RetrievalError()
 
+        if queryset:
+            return JsonResponse({"success": True, "message": "Item(s) retrieved!", "data": serializer.data})
+        else:
+            return EmptyResultSet()
         # # If there were no items found
         # if not queryset.exists():
         #     raise EmptyResultSet()
@@ -76,15 +84,11 @@ def get_item(request, type):
         # # If retrieved data could not be serialized properly
         # # else:
         # #     raise InvalidDataFound()
-        item = None
-        serializer = {}
-        if type.isnumeric():
-            item = Item.objects.get(id=int(type))
-            # Items are guaranteed to be serialized correctly. (error handling in creation/update workflows)
-            serializer = ItemSerializer(item)
-            print(serializer.data)
-        else:
-            raise RetrievalError()
+        # item = None
+        # serializer = {}
+
+        # else:
+            
         
         if item:
             return JsonResponse({"success": True, "message": "Item retrieved!", "data": serializer.data})

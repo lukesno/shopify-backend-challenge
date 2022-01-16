@@ -15,30 +15,30 @@
   </head>
   <body>
     <h1 style="margin-left: 1%; margin-top: 1%;">Update Item</h1>
-    <form action="/edit/{{curr_item.data.id}}/submit/" method="post">
+    <form action="/edit/{{data.id}}/submit/" method="post">
         <!-- <div class="mb-3"> -->
             <label for="name" class="form-label">Name</label>
-            <input id="name" name="name" class="form-control" value="{{curr_item.data.name}}" required>
+            <input id="name" name="name" class="form-control" value="{{data.name}}" required>
         <!-- </div> -->
         <!-- <div class="mb-3"> -->
             <label for="price" class="form-label">Price</label>
-            <input id="price" name="price" class="form-control" value="{{curr_item.data.price}}" required>
+            <input id="price" name="price" class="form-control" value="{{data.price}}" required>
         <!-- </div> -->
         <!-- <div class="mb-3"> -->
             <label for="cogs" class="form-label">COGS</label>
-            <input id="cogs" name="cogs" class="form-control" value="{{curr_item.data.cogs}}" required>
+            <input id="cogs" name="cogs" class="form-control" value="{{data.cogs}}" required>
         <!-- </div> -->
         <!-- <div class="mb-3"> -->
             <label for="quantity" class="form-label">Quantity</label>
-            <input id="quantity" name="quantity" class="form-control" value="{{curr_item.data.quantity}}" required>
+            <input id="quantity" name="quantity" class="form-control" value="{{data.quantity}}" required>
         <!-- </div> -->
         <!-- <div class="mb-3"> -->
             <label for="origin_country" class="form-label">Country of Origin</label>
-            <input id="origin_country" name="origin_country" class="form-control" value="{{curr_item.data.origin_country}}" required>
+            <input id="origin_country" name="origin_country" class="form-control" value="{{data.origin_country}}" required>
         <!-- </div> -->
         <!-- <div class="mb-3"> -->
             <label for="weight" class="form-label">Weight</label>
-            <input id="weight" name="weight" class="form-control" value="{{curr_item.data.weight}}" required>
+            <input id="weight" name="weight" class="form-control" value="{{data.weight}}" required>
         <!-- </div> -->
         <input type="submit" value="OK">
     </form>

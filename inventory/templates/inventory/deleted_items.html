@@ -26,6 +26,8 @@
                 <th scope="col">COGS</th>
                 <th scope="col">Country of Origin</th>
                 <th scope="col">Weight</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -38,25 +40,31 @@
                 <td>{{item.cogs}}</td>
                 <td>{{item.origin_country}}</td>
                 <td>{{item.weight}}</td>
+                <td><a href="/edit/{{item.id}}/" style="color: #dc3545; cursor: pointer;">Delete Permanently</a></td>
+                <td><a href="/edit/{{item.id}}/" style="color: #0d6efd; cursor: pointer;">Restore Item</a></td>
             </tr>
             <tr>
                 <td>
-                    <table class="table .table-borderless">
+                    <table class="table table-borderless">
                         <tbody>
-                            <tr><td>Deleted at: {{item.deletion_time}}</td></tr>
-                            <tr><td>Deletion reason: {{item.deletion_comment}}</td></tr>
-                            <tr><td>Delete Permenently  Restore Item</td></tr>
+                            <tr>
+                                <td>Deleted at: {{item.deletion_time}}</td>
+                            </tr>
+                            <tr>
+                                <td>Deletion reason: {{item.deletion_comment}}</td>
+                            </tr>
                         </tbody>
 
                     </table>
                 </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
-            <!-- <tr>
-                <td>Deletion reason: {{item.deletion_comment}}</td>
-            </tr>
-            <tr>
-                <td>Delete Permenently  Restore Item</td>
-            </tr> -->
 
             {% endfor %}
             {% else %}

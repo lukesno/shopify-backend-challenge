@@ -39,3 +39,11 @@ class EmptyResultSet(Exception):
 
     def __str__(self):
         return(self.message)
+
+class RestorationError(Exception):
+    """Exception raised when revived item is attempted to be revived again"""
+    def __init__(self, message="Item is already restored. You cannot restore an item twice."):
+        self.message = message
+
+    def __str__(self):
+        return(self.message)

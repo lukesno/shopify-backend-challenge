@@ -5,7 +5,7 @@ from django.http.response import HttpResponseRedirect, HttpResponse, JsonRespons
 from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
-from .exceptions import DeletionError, InvalidInputError, RetrievalError, InvalidDataFound, EmptyResultSet
+from .exceptions import DeletionError, InvalidInputError, RetrievalError, InvalidDataFound, EmptyResultSet, RestorationError
 from .forms import ItemForm
 import json
 
@@ -76,26 +76,6 @@ def get_item(request, type):
             return JsonResponse({"success": True, "message": "Item(s) retrieved!", "data": serializer.data})
         else:
             return EmptyResultSet()
-        # # If there were no items found
-        # if not queryset.exists():
-        #     raise EmptyResultSet()
-        # elif check.is_valid():
-        #     return JsonResponse({"success": True, "message": "Item(s) retrieved!", "data": serializer.data})
-        # # If retrieved data could not be serialized properly
-        # # else:
-        # #     raise InvalidDataFound()
-        # item = None
-        # serializer = {}
-
-        # else:
-            
-        
-        if item:
-            return JsonResponse({"success": True, "message": "Item retrieved!", "data": serializer.data})
-
-
-        
-
 
     except RetrievalError as retrieval_err:
         return JsonResponse({"success": False, "message": str(retrieval_err), "data": None})
@@ -157,6 +137,26 @@ def update_item(request, item_id):
         print("hiya")
         return JsonResponse({"success": False, "message": "Failed to update item due to unknown reasons. Please contact an administrator or try again later"})
 
+@api_view(['PUT'])
+# Behind the scenes, this is a put request since it is updating an existing item
+def restore_item(request, item_id):
+    try:
+        curr_item = Item.objects.get(id=item_id)
+
+        # If item is already revived, it can't be revived again
+        if not curr_item.deletion_comment:
+            raise RestorationError()
+        
+        curr_item.deletion_comment = None
+        curr_item.deletion_time = None
+
+        curr_item.save()
+
+        return JsonResponse({"success": True, "message": "Successfully restored item!"})
+    except RestorationError as restoration_err:
+        return JsonResponse({"success": False, "message": str(restoration_err)})
+    except: 
+        return JsonResponse({"success": False, "message": "Failed to restore item due to unknown reasons. Please contact an administrator or try again later"})
 
 @api_view(['PUT'])
 # Behind the scenes, this is a put request since it is updating an existing item
@@ -172,7 +172,7 @@ def soft_delete_item(request, item_id):
         # Calls Deletion model's delete method
         curr_item.delete(data["reason"])
 
-        return JsonResponse({"success": True, "message": "Successfully deleted item!"})
+        return JsonResponse({"success": True, "message": "Successfully soft deleted item!"})
     except DeletionError as deletion_err:
         return JsonResponse({"success": False, "message": str(deletion_err)})
     except: 
@@ -183,6 +183,6 @@ def soft_delete_item(request, item_id):
 def hard_delete_item(request, item_id):
     try:
         Item.objects.delete(id=item_id)
-        return HttpResponse("Success")
+        return JsonResponse({"success": True, "message": "Successfully deleted item completely."})
     except:
-        return HttpResponse("Fail")
+         return JsonResponse({"success": False, "message": "Failed to delete item due to unknown reasons. Please contact an administrator or try again later"})

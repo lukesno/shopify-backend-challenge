@@ -6,16 +6,16 @@ Tech Stack:
 
 Helpful Notes: 
 
-> * API implementation is found in `api/`   
-> * Website implemenetation is found in `inventory/`  
-> * Custom exceptions were created for API error handling (Found in `api/exceptions.py/`)  
-> * Serializers and forms were used to validate data  
-> * Read the comments for detailed descriptions!
+* API implementation is found in `api/`   
+* Website implemenetation is found in `inventory/`  
+* Custom exceptions were created for API error handling (Found in `api/exceptions.py/`)  
+* Serializers and forms were used to validate data  
+* Read the comments for detailed descriptions!
 
 ## Getting Started
 
 _Prerequisites:_   
-Python 3 (https://www.python.org/downloads/)
+> Python 3 (https://www.python.org/downloads/)
 
 _Installation Steps:_
 1. Open terminal at desired location (Following steps are all executed on terminal)

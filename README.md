@@ -19,7 +19,7 @@ _Prerequisites:_
 Python 3 (https://www.python.org/downloads/)
 
 _Installation Steps:_
-1. Open terminal at location at which you want this repo installed and 
+1. Open terminal at desired location 
 
 2. `git clone https://github.com/lukesno/shopify-backend-challenge` on terminal
 

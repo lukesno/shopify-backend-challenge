@@ -67,15 +67,15 @@ def post_item(request):
                 origin_country=data["origin_country"], weight=float(data["weight"]))
             new_item.save()
 
-            return JsonResponse({"success": True, "message": "Successfully created item!"})
+            return JsonResponse({"action": "post", "success": True, "message": "Successfully created item!"})
         else:
             # Invalid data was inputted
             raise InvalidInputError()
         
     except InvalidInputError as invalid_inp_err:
-        return JsonResponse({"success": False, "message": str(invalid_inp_err)})
+        return JsonResponse({"action": "post", "success": False, "message": str(invalid_inp_err)})
     except:
-        return JsonResponse({"success": False, "message": "Failed to update item due to unknown reasons. Please contact an administrator or try again later"})
+        return JsonResponse({"action": "post", "success": False, "message": "Failed to update item due to unknown reasons. Please contact an administrator or try again later"})
 
 @api_view(['PUT'])
 def update_item(request, item_id):
@@ -94,15 +94,14 @@ def update_item(request, item_id):
             curr_item.weight = new_data["weight"]
 
             curr_item.save()
-            return JsonResponse({"success": True, "message": f"Successfully updated item: {curr_item.name}"})
+            return JsonResponse({"action": "update", "success": True, "message": f"Successfully updated item: {curr_item.name}"})
         else:
             # Invalid data was inputted
             raise InvalidInputError()
     except InvalidInputError as invalid_inp_err:
-        return JsonResponse({"success": False, "message": str(invalid_inp_err)})
+        return JsonResponse({"action": "update", "success": False, "message": str(invalid_inp_err)})
     except:
-        print("hiya")
-        return JsonResponse({"success": False, "message": "Failed to update item due to unknown reasons. Please contact an administrator or try again later"})
+        return JsonResponse({"action": "update", "success": False, "message": "Failed to update item due to unknown reasons. Please contact an administrator or try again later"})
 
 @api_view(['PUT'])
 # Behind the scenes, this is a put request since it is updating an existing item

@@ -17,23 +17,7 @@
     <p>{{message}}</p>
     
     {% if success %}
-    <label for="name" class="form-label">Item Name</label>
-    <input readonly  id="name" name="name" class="form-control" value="{{data.name}}" required>
-
-    <label for="price" class="form-label">Price</label>
-    <input readonly  id="price" name="price" class="form-control" value="{{data.price}}" required>
-
-    <label for="cogs" class="form-label">COGS</label>
-    <input readonly  id="cogs" name="cogs" class="form-control" value="{{data.cogs}}" required>
-
-    <label for="quantity" class="form-label">Quantity</label>
-    <input readonly  id="quantity" name="quantity" class="form-control" value="{{data.quantity}}" required>
-
-    <label for="origin_country" class="form-label">Country of Origin</label>
-    <input readonly  id="origin_country" name="origin_country" class="form-control" value="{{data.origin_country}}" required>
-
-    <label for="weight" class="form-label">Weight</label>
-    <input readonly  id="weight" name="weight" class="form-control" value="{{data.weight}}" required>
+    
     {% endif %}
     <a style="color: white; text-decoration: none;" href="/"><button type="button" class="btn btn-secondary">Go back to main</button></a>
     <a style="color: white; text-decoration: none;" href="/edit/{{ data.id }}/"><button type="button" class="btn btn-secondary">Edit Again</button></a>

@@ -10,12 +10,13 @@ Current Structure of Application:
 -> Frontend logic and helpers to call APIs (shopify-backend-challenge/inventory)
 
 
-## Get Started
+## Getting Started
 
 Prerequisites:
 
 Python 3 (https://www.python.org/downloads/)
 
+Installation Steps:
 1. Open the location at which you want this repo installed; then open the terminal and run `git clone https://github.com/lukesno/shopify-backend-challenge`
 
 2. Activate the premade virtual environment using `source env/bin/activate` (All dependencies are preinstalled on this virtual environment.)

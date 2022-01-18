@@ -1,4 +1,4 @@
-# Shopify's Backend Challenge for Summer 2022 Internships
+## Shopify's Backend Challenge for Summer 2022 Internships
 
 _Tech Stack:_  
 
@@ -12,7 +12,7 @@ _Helpful Notes:_
 -> Read the comments for detailed descriptions!
 
 
-## Getting Started
+### Getting Started
 
 _Prerequisites:_   
 Python 3 (https://www.python.org/downloads/)

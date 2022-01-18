@@ -17,11 +17,19 @@ Helpful Notes:
 Prerequisites:   
 > Python 3 (https://www.python.org/downloads/)  
   
-Installation Steps:
+Installation Steps (Mac):
 1. Open terminal at desired location (Following steps are all executed on terminal)
 
 2. Clone the repo: `git clone https://github.com/lukesno/shopify-backend-challenge`
 
-3. Activate the premade virtual environment: `source env/bin/activate` (All dependencies are preinstalled on this virtual environment.)
+3. Install/upgrade pip: `python3 -m pip install --user --upgrade pip`
 
-4. Start the app by running `python3 manage.py runserver`
+4. Install virtualenv: `python3 -m pip install --user virtualenv`
+
+5. Create a virtual environment (for dependency installation): `python3 -m venv env`
+
+6. Activate the `env` environment that was created: `source env/bin/activate`
+
+7. Install dependencies: `python3 -m pip install -r requirements.txt`
+
+8. Start the app by running `python3 manage.py runserver`

@@ -10,7 +10,7 @@ Structure of Application:
 -> Frontend logic and helpers to call APIs (shopify-backend-challenge/inventory)
 
 \
-\
+
 ## Getting Started
 
 Prerequisites:  

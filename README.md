@@ -4,7 +4,7 @@ Shopify's Backend Challenge for Summer 2022 Internships
 Tech Stack:   
 Django
 
-Current Structure of Application:
+Structure of Application:
 
 -> APIs that handle CRUD operations (located in shopify-backend-challenge/api)  
 -> Frontend logic and helpers to call APIs (shopify-backend-challenge/inventory)

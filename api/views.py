@@ -15,39 +15,6 @@ from .models import Item
 from .serializers import ItemSerializer
 import uuid
 
-# @api_view(['GET'])
-# def get_items(request):
-#     try:
-#         all_items = Item.objects.filter(deletion_comment__isnull=True)
-#         # Items are guaranteed to be serialized correctly. (error handling in creation/update workflows)
-#         serializer = ItemSerializer(all_items, many=True)
-
-#         return JsonResponse(serializer.data, safe=False)
-#     except:
-#         return HttpResponse("There are no items in the inventory.")
-
-# @api_view(['GET'])
-# def get_deleted_items(request):
-#     try:
-#         deleted_items = Item.objects.filter(deletion_comment__isnull=False)
-#         # Items are guaranteed to be serialized correctly. (error handling in creation/update workflows)
-#         serializer = ItemSerializer(deleted_items, many=True)
-
-#         return JsonResponse(serializer.data, safe=False)
-#     except:
-#         return HttpResponse("There are no items in the inventory.")
-
-# @api_view(['GET'])
-# def get_item(request, item_id):
-#     try:
-#         curr_item = Item.objects.get(id=item_id)
-#         # Items are guaranteed to be serialized correctly. (error handling in creation/update workflows)
-#         serializer = ItemSerializer(curr_item)
-        
-#         return JsonResponse(serializer.data, safe=False)
-#     except:
-#         # Exception occurs when item is not found.
-#         return HttpResponse("Requested item does not exist.")
 
 @api_view(['GET'])
 def get_item(request, type):

@@ -1,18 +1,16 @@
 from django.urls import path
+from django.views.generic import RedirectView
 
 from . import views
 
+# All base urls call a general router view, which renders template pages accordingly.
+# Similarily, all submission urls call a general submission view, which calls intermediate functions to handle API requests
 urlpatterns = [
-    path('', views.render_main_page, name='render_main_page'),
-    path('deleted/', views.render_deleted_page, name='render_deleted_page'),
-    path('edit/<int:item_id>/', views.render_edit_page, name='render_edit_page'),
-    path('edit/<int:item_id>/submit/', views.submit_edit, name="submit_edit"),
-    path('create/', views.render_create_page, name='render_create_page'),
-    path('create/submit/', views.submit_item, name="submit_item"),
-    path('remove/<int:item_id>/', views.render_deletion_page, name="render_deletion_page"),
-    path('remove/<int:item_id>/submit/', views.submit_deletion, name="submit_deletion"),
-
-    ## change these later
-    path('remove/hard/<int:item_id>/submit/', views.submit_hard_deletion, name="submit_hard_deletion"),
-    path('restore/<int:item_id>/submit/', views.submit_restoration, name="submit_restoration"),
+    # Redirects default url to main page
+    path('', RedirectView.as_view(url='/main/'), name='main'),
+    path('<str:url_type>/', views.router, name='router'),
+    path('<str:url_type>/<int:item_id>/', views.router, name='router'),
+    path('<str:url_type>/submit/', views.submission_handler, name='submission_handler'),
+    path('<str:url_type>/<int:item_id>/submit/', views.submission_handler, name='submission_handler'),
+    
 ]

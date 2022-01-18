@@ -1,104 +1,51 @@
-from django.http.response import HttpResponseRedirect, HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-from api.models import Deletion
-from rest_framework.parsers import JSONParser 
-from datetime import datetime
 
-# from django.http import HttpResponse
-# from .models import Item
-import requests
-import json
-import uuid
+# Importing helper functions for "router" function
+from .helper.render import render_main_page, render_deleted_page, render_create_page, render_deletion_page, render_edit_page
+from .helper.submission import submit_item, submit_soft_deletion, submit_edit, submit_hard_deletion, submit_restoration
+
+# Overrides default 404 handler to render reroute page.
+def invalid_url_handler(request, exception):
+    return render(request, 'inventory/invalid_url.html')
+
+# Renders appropriate template page according to url accessed.
+# Utilizes helper functions in helper/render.py
+def router(request, *args, **kwargs):
+    url_type = kwargs.get("url_type")
+    item_id = kwargs.get("item_id", None)
+
+    if url_type == "main":
+        return render_main_page(request)
+    elif url_type == "deleted":
+        return render_deleted_page(request)
+    elif url_type == "create":
+        return render_create_page(request)
+    elif url_type == "remove":
+        return render_deletion_page(request, item_id)
+    elif url_type == "edit":
+        return render_edit_page(request, item_id)
+    else:
+        return render(request, 'inventory/invalid_url.html')
 
 
-def render_main_page(request):
-    item_list = requests.get(f"http://127.0.0.1:8000/api/item/get/all")
-    # Passing on response of item_list as a parameter to the html template
-    context = json.loads(item_list.text)
-
-    return render(request, 'inventory/index.html', context)
-
-def render_deleted_page(request):
-    deleted_items_list = requests.get(f"http://127.0.0.1:8000/api/item/get/deleted")
-    context = json.loads(deleted_items_list.text)
-
-    return render(request, 'inventory/deleted_items.html', context)
-
-def render_create_page(request):
-    return render(request, 'inventory/create/main.html')   
-
-def render_edit_page(request, item_id):
-    ## implement error checking?
-    curr_item = requests.get(f"http://127.0.0.1:8000/api/item/get/{item_id}")
-    context = json.loads(curr_item.text)
-
-    return render(request, 'inventory/edit/main.html', context)
-
-def render_deletion_page(request, item_id):
-    curr_item = requests.get(f"http://127.0.0.1:8000/api/item/get/{item_id}")
-    context = json.loads(curr_item.text)
-
-    return render(request, 'inventory/delete/soft/main.html', context)
-
+# Handles actions that require data handling from every sub page (edit, create, delete)
+# Calls helper functions to handle access to APIs for each case
 @csrf_exempt
-def submit_item(request):
-    if request.method == 'POST':
-        res = requests.post("http://127.0.0.1:8000/api/item/post/", data=json.dumps(request.POST))
-        context = json.loads(res.text)
+def submission_handler(request, *args, **kwargs):
+    url_type = kwargs.get("url_type")
+    item_id = kwargs.get("item_id", None)
 
-        return render(request, 'inventory/create/success.html', context)
-
-@csrf_exempt
-# POST request made from form
-# Acts as an intermediate to call appropriate API calls before redirecting
-def submit_edit(request, item_id):
-    if request.method == 'POST':
-        res = requests.put(f"http://127.0.0.1:8000/api/item/update/{item_id}", data=json.dumps(request.POST))
-        context = json.loads(res.text)
-
-        curr_item = requests.get(f"http://127.0.0.1:8000/api/item/get/{item_id}")
-        curr_item_json = json.loads(curr_item.text)
-
-        context['data'] =  curr_item_json['data']
-
-        return render(request, 'inventory/edit/success.html', context)
-
-@csrf_exempt
-def submit_deletion(request, item_id):
-    if request.method == 'POST':
-        res = requests.put(f"http://127.0.0.1:8000/api/item/delete/soft/{item_id}", data=json.dumps(request.POST))
-        context = json.loads(res.text)
-
-        return render(request, 'inventory/delete/soft/success.html', context)
-
-##### TEMP #######
-# Replace when we get a general fallback
-
-def submit_hard_deletion(request, item_id):
-    res = requests.delete(f"http://127.0.0.1:8000/api/item/delete/hard/{item_id}")
-    context = json.loads(res.text)
-
-    return render(request, 'inventory/delete/hard/success.html', context)
-
-def submit_restoration(request, item_id):
-    res = requests.put(f"http://127.0.0.1:8000/api/item/restore/{item_id}")
-    context = json.loads(res.text)
-
-    # replace the template with the general one
-    return render(request, 'inventory/delete/hard/success.html', context)
-
-# @csrf_exempt
-# def submit_hard_deletion(request, item_id):
-#     if request.method == 'POST':
-#         form = ItemForm(request.POST)
-
-#         if form.is_valid():
-#             requests.post(f"http://127.0.0.1:8000/api/item/delete/{item_id}", data=json.dumps(request.POST))
-#             return redirect(f"/delete/{item_id}/success")
-#         else:
-#             return HttpResponse("The information you inputted is invalid. Please try again.")
-
-
-
+    if url_type == "create":
+        return submit_item(request)
+    elif url_type == "edit":
+        return submit_edit(request, item_id)
+    elif url_type == "remove":
+        return submit_soft_deletion(request, item_id)
+    elif url_type == "annihilate":
+        return submit_hard_deletion(request, item_id)
+    elif url_type == "restore":
+        return submit_restoration(request, item_id)
+    else:
+        return render(request, 'inventory/invalid_url.html')
 

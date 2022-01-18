@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Invalid Url</title>
+    {# Load the tag library #}
+    {% load bootstrap5 %}
+
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+    {# Display django.contrib.messages as Bootstrap alerts #}
+    {% bootstrap_messages %}
+
+  </head>
+  <body>
+    <p>Invalid URL accessed. Please click the page below to navigate to the main page</p>
+    
+    <a style="color: white; text-decoration: none;" href="/main"><button type="button" class="btn btn-secondary">Go back to main</button></a>
+  </body>
+</html>

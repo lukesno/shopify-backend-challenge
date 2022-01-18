@@ -23,3 +23,5 @@ urlpatterns = [
     path('', include('inventory.urls')),
     path('api/item/', include('api.urls'))
 ]
+
+handler404 = 'inventory.views.invalid_url_handler'

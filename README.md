@@ -1,13 +1,15 @@
 # Shopify's Backend Challenge for Summer 2022 Internships
 
 _Tech Stack:_  
+
 Django
 
-_Structure of Application:_
+_Helpful Notes:_  
 
--> APIs that handle CRUD operations (located in shopify-backend-challenge/api)  
--> Frontend logic and helpers to call APIs (shopify-backend-challenge/inventory)  
-
+-> API implementation is found in `shopify-backend-challenge/api`   
+-> Website implemenetation is found in `shopify-backend-challenge/inventory`  
+-> Custom exceptions were created for API error handling (Found in `shopify-backend-challenge/api/exceptions.py`)
+-> Read the comments for detailed descriptions!
 
 
 ## Getting Started

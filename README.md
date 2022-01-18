@@ -1,4 +1,4 @@
-## Shopify's Backend Challenge for Summer 2022
+# Shopify's Backend Challenge for Summer 2022
 
 Tech Stack: 
 
@@ -13,7 +13,7 @@ Helpful Notes:
 > * Read the comments for detailed descriptions!
 
 ---
-### Getting Started
+## Getting Started
 
 _Prerequisites:_   
 Python 3 (https://www.python.org/downloads/)

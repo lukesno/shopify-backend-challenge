@@ -2,15 +2,15 @@
 
 _Tech Stack:_  
 
-Django
+> Django
 
 _Helpful Notes:_  
 
--> API implementation is found in `api/`   
--> Website implemenetation is found in `inventory/`  
--> Custom exceptions were created for API error handling (Found in `api/exceptions.py/`)  
--> Serializers and forms were used to validate data  
--> Read the comments for detailed descriptions!
+> -> API implementation is found in `api/`   
+> -> Website implemenetation is found in `inventory/`  
+> -> Custom exceptions were created for API error handling (Found in `api/exceptions.py/`)  
+> -> Serializers and forms were used to validate data  
+> -> Read the comments for detailed descriptions!
 
 
 ### Getting Started

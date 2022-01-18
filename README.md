@@ -1,5 +1,4 @@
-# shopify-backend-challenge
-Shopify's Backend Challenge for Summer 2022 Internships
+# Shopify's Backend Challenge for Summer 2022 Internships
 
 _Tech Stack:_  
 Django

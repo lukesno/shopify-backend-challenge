@@ -6,7 +6,7 @@ _Tech Stack:_
 
 _Helpful Notes:_  
 
-> *API implementation is found in `api/`   
+> * API implementation is found in `api/`   
 > *Website implemenetation is found in `inventory/`  
 > *Custom exceptions were created for API error handling (Found in `api/exceptions.py/`)  
 > *Serializers and forms were used to validate data  

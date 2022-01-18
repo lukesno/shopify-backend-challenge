@@ -1,10 +1,10 @@
 # shopify-backend-challenge
 Shopify's Backend Challenge for Summer 2022 Internships
 
-Tech Stack:   
+**Tech Stack:**  
 Django
 
-Structure of Application:
+**Structure of Application:**
 
 -> APIs that handle CRUD operations (located in shopify-backend-challenge/api)  
 -> Frontend logic and helpers to call APIs (shopify-backend-challenge/inventory)  
@@ -13,10 +13,10 @@ Structure of Application:
 
 ## Getting Started
 
-Prerequisites:  
+**Prerequisites:** 
 Python 3 (https://www.python.org/downloads/)
 
-Installation Steps:
+**Installation Steps:**
 1. Open terminal at location at which you want this repo installed and 
 
 2. `git clone https://github.com/lukesno/shopify-backend-challenge` on terminal

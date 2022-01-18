@@ -8,7 +8,7 @@ _Helpful Notes:_
 
 -> API implementation is found in `shopify-backend-challenge/api`   
 -> Website implemenetation is found in `shopify-backend-challenge/inventory`  
--> Custom exceptions were created for API error handling (Found in `shopify-backend-challenge/api/exceptions.py`)
+-> Custom exceptions were created for API error handling (Found in `shopify-backend-challenge/api/exceptions.py`)  
 -> Read the comments for detailed descriptions!
 
 

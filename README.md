@@ -13,7 +13,7 @@ _Structure of Application:_
 
 ## Getting Started
 
-_Prerequisites:_ 
+_Prerequisites:_   
 Python 3 (https://www.python.org/downloads/)
 
 _Installation Steps:_

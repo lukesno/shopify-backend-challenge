@@ -14,10 +14,10 @@ Helpful Notes:
 
 ## Getting Started
 
-_Prerequisites:_   
+Prerequisites:   
 > Python 3 (https://www.python.org/downloads/)
 
-_Installation Steps:_
+Installation Steps:
 1. Open terminal at desired location (Following steps are all executed on terminal)
 
 2. Clone the repo: `git clone https://github.com/lukesno/shopify-backend-challenge`

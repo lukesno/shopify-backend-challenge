@@ -1,10 +1,10 @@
 ## Shopify's Backend Challenge for Summer 2022
 
-_Tech Stack:_  
+Tech Stack: 
 
 > Django
 
-_Helpful Notes:_  
+Helpful Notes: 
 
 > * API implementation is found in `api/`   
 > * Website implemenetation is found in `inventory/`  

@@ -44,7 +44,7 @@ Installation Steps (Windows):
 
 4. Install virtualenv: `pip install virtualenv`
 
-5. Create a virtual environment (for dependency installation): `python -m venv venv`
+5. Create a virtual environment (for dependency installation): `python -m venv env`
 
 6. Activate the `env` environment that was created: `.\sample_venv\Scripts\activate`
 

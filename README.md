@@ -6,14 +6,13 @@ Django
 
 Current Structure of Application:
 
--> APIs that handle CRUD operations (located in shopify-backend-challenge/api)
+-> APIs that handle CRUD operations (located in shopify-backend-challenge/api)  
 -> Frontend logic and helpers to call APIs (shopify-backend-challenge/inventory)
 
 
 ## Getting Started
 
-Prerequisites:
-
+Prerequisites:  
 Python 3 (https://www.python.org/downloads/)
 
 Installation Steps:

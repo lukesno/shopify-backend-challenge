@@ -7,9 +7,9 @@ Django
 Structure of Application:
 
 -> APIs that handle CRUD operations (located in shopify-backend-challenge/api)  
--> Frontend logic and helpers to call APIs (shopify-backend-challenge/inventory)
+-> Frontend logic and helpers to call APIs (shopify-backend-challenge/inventory)\
 
-\
+
 
 ## Getting Started
 

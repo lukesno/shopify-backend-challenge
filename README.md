@@ -12,9 +12,9 @@ Helpful Notes:
 > * Serializers and forms were used to validate data  
 > * Read the comments for detailed descriptions!
 
-
-### Getting Started
 ---
+### Getting Started
+
 _Prerequisites:_   
 Python 3 (https://www.python.org/downloads/)
 

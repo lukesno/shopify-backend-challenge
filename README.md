@@ -14,7 +14,7 @@ Helpful Notes:
 
 
 ### Getting Started
-
+---
 _Prerequisites:_   
 Python 3 (https://www.python.org/downloads/)
 

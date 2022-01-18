@@ -1,13 +1,21 @@
 # shopify-backend-challenge
 Shopify's Backend Challenge for Summer 2022 Internships
 
-Current Structure of Backend:
+Tech Stack:
+Django
 
-Two major components
--> APIs
--> Templates + Views that templates use
+Current Structure of Application:
+-> APIs that handle CRUD operations (located in shopify-backend-challenge/api)
+-> Frontend logic and helpers to call APIs (shopify-backend-challenge/inventory)
 
-APIs focus on communicating with the database and returning JSON data whenever needed (GET requests)
 
-Views for templates act as intermediates that check for validity of data being passed to APIs
-(Maybe move error checking to APIs by utilizing serializers!)
+## Get Started
+
+Prerequisites:
+Python 3 (https://www.python.org/downloads/)
+
+1. Open the location at which you want this repo installed; then open the terminal and run `git clone https://github.com/lukesno/shopify-backend-challenge`
+
+2. Activate the premade virtual environment using `source env/bin/activate` (All dependencies are preinstalled on this virtual environment.)
+
+3. Run the app by running `python3 manage.py runserver`

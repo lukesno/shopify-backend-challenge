@@ -32,7 +32,7 @@ Installation Steps (Mac):
 
 7. Install dependencies: `python3 -m pip install -r requirements.txt`
 
-8. Start the app by running `python3 manage.py runserver`
+8. Start the app by running `python3 manage.py runserver`  
 
 
 Installation Steps (Windows):

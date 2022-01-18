@@ -21,7 +21,7 @@ Python 3 (https://www.python.org/downloads/)
 _Installation Steps:_
 1. Open terminal at desired location (Following steps are all executed on terminal)
 
-2. Clone the repo: `git clone https://github.com/lukesno/shopify-backend-challenge` on terminal
+2. Clone the repo: `git clone https://github.com/lukesno/shopify-backend-challenge`
 
 3. Activate the premade virtual environment: `source env/bin/activate` (All dependencies are preinstalled on this virtual environment.)
 

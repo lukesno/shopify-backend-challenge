@@ -5,6 +5,7 @@ Tech Stack:
 Django
 
 Current Structure of Application:
+
 -> APIs that handle CRUD operations (located in shopify-backend-challenge/api)
 -> Frontend logic and helpers to call APIs (shopify-backend-challenge/inventory)
 
@@ -12,6 +13,7 @@ Current Structure of Application:
 ## Get Started
 
 Prerequisites:
+
 Python 3 (https://www.python.org/downloads/)
 
 1. Open the location at which you want this repo installed; then open the terminal and run `git clone https://github.com/lukesno/shopify-backend-challenge`

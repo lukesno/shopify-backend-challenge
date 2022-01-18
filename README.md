@@ -1,4 +1,4 @@
-## Shopify's Backend Challenge for Summer 2022 Internships
+## Shopify's Backend Challenge for Summer 2022
 
 _Tech Stack:_  
 

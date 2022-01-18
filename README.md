@@ -2,7 +2,7 @@
 
 Tech Stack: 
 
-> Django
+> Django  
 
 Helpful Notes: 
 
@@ -15,8 +15,8 @@ Helpful Notes:
 ## Getting Started
 
 Prerequisites:   
-> Python 3 (https://www.python.org/downloads/)
-
+> Python 3 (https://www.python.org/downloads/)  
+  
 Installation Steps:
 1. Open terminal at desired location (Following steps are all executed on terminal)
 

@@ -6,6 +6,7 @@ Tech Stack:
 
 Helpful Notes: 
 
+* I chose to implement the "When deleting, allow deletion comments and undeletion" feature!
 * API implementation is found in `api/`   
 * Website implemenetation is found in `inventory/`  
 * Custom exceptions were created for API error handling (Found in `api/exceptions.py/`)  
